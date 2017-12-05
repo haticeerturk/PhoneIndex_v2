@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% for record in records %}
+		<div>
+			<img id="recordimg" src="{{'static/picture/green-ok-icon.png'}}"><label id="h4"><a href="{{ url_for('recordDetail', id=record.id) }}">{{ record.name }} {{ record.surname }}</a></label>
+			<p>{{ record.phone_number }}</p>
+		</div><br>
+	{% endfor %}
+{% endblock %}

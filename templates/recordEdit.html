@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="editdiv">
+		<label id="editlabel">Yeni Kayıt Ekleme</label>
+	    <form method="POST" id="editform">
+					{{ form.csrf_token }}
+					<fieldset>
+                <legend></legend>
+              	{{ form.name.label }}{{ form.name }}<br>
+                {{ form.surname.label }}{{ form.surname}}<br>
+                {{ form.phone_number.label }}{{ form.phone_number }}<br>
+            </fieldset>
+					<input type="submit" class="btn btn-primary" id="kaydet" value="Kaydet" />
+	    </form>
+	</div>
+{% endblock %}

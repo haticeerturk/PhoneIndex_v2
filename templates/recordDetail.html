@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+		<div id="detaildiv">
+			{% if record.register_time %}
+				<img id="recorddetailimg" src="{{'/static/picture/green-ok-icon.png'}}"><label id="h4label">{{ record.name }} {{ record.surname }}</label>
+				<div id="editicon">
+					<a class="btn btn-default" href="{{ url_for('recordEdit', id=record.id) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+					<form action="{{ url_for('recordDelete', id=record.id) }}" method="POST">{{ csrf_token }}
+						<button id="deletebutton" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+					</form>
+				</div>
+				<p id="editnumberp">{{ record.phone_number }}</p>
+				<p id="detailp">{{ record.register_time }}</p>
+			{% endif %}
+		</div><br>
+{% endblock %}

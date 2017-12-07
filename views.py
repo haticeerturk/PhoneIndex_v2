@@ -1,10 +1,7 @@
-from flask import Flask, request, redirect, url_for, jsonify
-from flask import render_template
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from forms import RecordForm
 from models import Record
 from key import get_secret_key
-import json
 from flask_restful import reqparse, abort, Api, Resource
 
 app = Flask(__name__)

@@ -11,7 +11,7 @@
 
  - :diamond_shape_with_a_dot_inside: You must be install Flask: **pip install Flask** <br>
  - :diamond_shape_with_a_dot_inside: You must be install SQLAlchemy: **pip install Flask-SQLAlchemy** <br>
- - :diamond_shape_with_a_dot_inside: You must be install Flask-WTF: **pip install Flask-WTF** <br>
+ - :diamond_shape_with_a_dot_inside: You must be install Flask-Restful: **pip install flask-restful** <br>
  - :diamond_shape_with_a_dot_inside: Then, you can run the project like that;<br>
    - **export FLASK_APP=views.py** <br>
    - **flask run**

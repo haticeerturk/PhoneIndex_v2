@@ -1,6 +1,6 @@
 # Phone Index v2
 
-:iphone: A simple Flask and SqlAlchemy project.<br><br>
+:iphone: A simple Flask-Restful and SqlAlchemy project.<br><br>
 
 :heavy_check_mark: ***What are the things to do before using it?*** <br>
 

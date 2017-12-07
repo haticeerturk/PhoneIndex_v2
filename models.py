@@ -1,24 +1,28 @@
-from sqlalchemy import *
-from sqlalchemy import create_engine, ForeignKey
-from sqlalchemy import Column, Date, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+import flask
+import flask_sqlalchemy
+import flask_restless
+import datetime
 
-engine = create_engine('sqlite:///records.db', echo=True)
-Base = declarative_base()
+app = flask.Flask(__name__)
+app.config['DEBUG'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///records.db'
+db = flask_sqlalchemy.SQLAlchemy(app)
 
-class Record(Base):
+class Record(db.Model):
     __tablename__ = 'records'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    surname = Column(String(30))
-    phone_number = Column(String(11))
-    register_time = Column(DateTime, default=func.now())
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    surname = db.Column(db.String(30))
+    phone_number = db.Column(db.String(11))
+    register_time = db.Column(db.DateTime, default=db.func.now())
 
-    def __init__(self, name, surname, phone_number):
-        self.name = name
-        self.surname = surname
-        self.phone_number = phone_number
+    def __init__(self, data):
+        self.name = data['name']
+        self.surname = data['surname']
+        self.phone_number = data['phone_number']
 
-Base.metadata.create_all(engine)
+db.create_all()
+
+manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
+manager.create_api(Record, methods=['GET', 'POST', 'DELETE', 'PATCH'])
